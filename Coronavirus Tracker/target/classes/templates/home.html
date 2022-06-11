@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>COVID 19 Tracker APP</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${latestReportedCases}"></h1>
+    <p class="lead">This application lists the current number of confirmed COVID cases</p>
+</div>
+
+<table class="table table-condensed">
+    <tr>
+        <th class="info" >State</th>
+        <th class="info" >Country</th>
+        <th class="info" >Total Reported cases</th>
+    </tr>
+    <tr th:each="locationStat : ${locationStats}">
+        <td th:text="${locationStat.state}"></td>
+        <td th:text="${locationStat.country}"></td>
+        <td th:text="${locationStat.latestReportedCases}">0</td>
+    </tr>
+</table>
+
+</body>
+
+</html>
